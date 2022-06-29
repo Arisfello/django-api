@@ -9,5 +9,10 @@ class MeetupAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-admin.site.register(Meetup, MeetupAdmin)
-admin.site.register(Location)
+class MeetupAdminLocation(admin.ModelAdmin):
+    list_display = ('name', 'address')
+    list_filter = ('name',)
+
+
+admin.site.register(Meetup, MeetupAdmin, )
+admin.site.register(Location, MeetupAdminLocation)
